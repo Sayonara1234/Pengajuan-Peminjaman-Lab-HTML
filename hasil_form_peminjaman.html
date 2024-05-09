@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hasil Pengajuan Peminjaman Lab Mahasiswa</title>
+    <style>
+        #back {
+            float: right;
+            margin-right: 2px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body style="width: 490px;">
+    <div id="hasilForm">
+        <fieldset>
+            <legend>Pengajuan Peminjaman Lab Mahasiswa Ilmu Komputer</legend>
+            <div style="text-align: center;">
+                <p>UPN Veteran Jakarta<span><img src="https://belajargiat.id/wp-content/uploads/2020/11/logo-upnvj.png" alt="logo UPNVJ" width="40" height="40"></span></p> 
+            </div>
+            <div>
+                <label id="nim">NIM : </label><br>
+                <label id="nama">Nama : </label><br>
+                <label id="lantai">Lantai : </label><br>
+                <label id="tahunMasuk">Tahun Masuk : </label>
+            </div>
+            <div>
+                <p>Lab yang di pilih :</p>
+                <ul id="labPilihanList"></ul>
+            </div>
+        </fieldset>
+        <button id="back">Kembali</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const nim = urlParams.get('nim');
+        const nama = urlParams.get('nama');
+        const lantai = urlParams.get('lantai');
+        const tahunMasuk = urlParams.get('tahunMasuk');
+        const labPilihan = urlParams.get('labPilihan');
+
+        document.getElementById("nim").innerText += nim;
+        document.getElementById("nama").innerText += nama;
+        document.getElementById("lantai").innerText += lantai;
+        document.getElementById("tahunMasuk").innerText += tahunMasuk;
+
+        const labArray = labPilihan.split(", ");
+        const labPilihanList = document.getElementById("labPilihanList");
+        labArray.forEach(function (labItem) {
+            const li = document.createElement("li");
+            li.textContent = labItem;
+            labPilihanList.appendChild(li);
+        });
+
+        const kembaliButton = document.getElementById("back");
+
+        kembaliButton.addEventListener("click", function() {
+            const konfirmasi = confirm("Anda Yakin Keluar \nPilih OK untuk keluar atau Cancel untuk tetap di Hasil Pengajuan Peminjaman.");
+            if (konfirmasi) {
+                window.close();
+            }
+        });
+    </script>
+</body>
+</html>

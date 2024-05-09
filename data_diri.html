@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Data Diri Pembuat Website</title>
+    <style>
+        table {
+            justify-content: center;
+        }
+
+        .rightColumn {
+            width: 300px;
+            height: 24px;
+        }
+
+        #upnPopup {
+            text-align: center;
+            height: 40px;
+        }
+
+        #wish {
+            height: 40px;
+            text-align: center;
+            vertical-align: bottom;
+        }
+
+        .buttonPopup {
+            border: 1px  rgba(177, 176, 176, 0.934);
+        }
+
+        #back {
+            float: right;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        #mhsSI {
+            height: 30px;
+        }
+    </style>
+</head>
+<body style="width: 498px;">
+    <div>
+        <fieldset style="width: 460px;">
+            <legend>Mahasiswa Sistem Informasi Ilmu Komputer</legend>
+            <table>
+                <tr>
+                    <td colspan="3" id="upnPopup">UPN Veteran Jakarta<span><img src="https://belajargiat.id/wp-content/uploads/2020/11/logo-upnvj.png" alt="logo UPNVJ" width="20" height="20"></span></td>
+                </tr>
+                <tr>
+                    <td>Nama</td>
+                    <td>:</td>
+                    <td class="rightColumn">Mutia Zahra Usma</td>
+                </tr>
+                <tr>
+                    <td>NIM</td>
+                    <td>:</td>
+                    <td class="rightColumn">2210501008</td>
+                </tr>
+                <tr>
+                    <td>Program Studi</td>
+                    <td>:</td>
+                    <td class="rightColumn">Sistem Informasi</td>
+                </tr>
+                <tr>
+                    <td colspan="3" id="wish">" Semoga Sistem ini berguna " - <b>Mutia</b></td>
+                </tr>
+            </table>
+        </fieldset>
+        <button id="back">Kembali</button>
+    </div>
+
+    <script>
+        const kembaliButton = document.getElementById("back");
+
+        kembaliButton.addEventListener("click", function() {
+            const konfirmasi = confirm("Anda Yakin Keluar \nPilih OK untuk keluar atau Cancel untuk tetap di Data Diri.");
+            if (konfirmasi) {
+                window.close();
+            }
+        });
+    </script>
+</body>
+</html>

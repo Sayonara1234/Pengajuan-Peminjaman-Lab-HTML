@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ujian Tengah Semester</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"/>
+    <style>
+        header {
+        background: rgb(13, 13, 63);
+        color: white;
+        font-size: 13px;
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    #header {
+        font-weight: bolder;
+    }
+
+    a:link, a:visited, a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    #sistem {
+        font-size: 14px;
+        font-weight: bold;
+        color: rgb(45, 171, 249);
+        margin-top: 1.4%;
+    }
+
+    #container {
+        display: flex;
+        justify-content: space-between;
+        width: 74%;
+        margin-top: 2%;
+    }
+
+    #left {
+        width: 50%;
+        margin: 0 auto; /* Agar konten berada di tengah horizontal */
+        text-align: left;
+        margin-left: 10%;
+    }
+
+    #right {
+        width: 50%;
+        margin-left: 3%;
+        margin-top: 3%;
+    }
+
+    #mulai {
+        background-color: rgb(45, 171, 249);
+        border: none;
+        color: white;
+    }
+
+    #daftar {
+        background-color: white;
+        border: 1px solid rgba(177, 176, 176, 0.934);
+    }
+
+    .button {
+        width: 100px;
+        height: 32px;
+        font-size: small;
+        border-radius: 4px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <label id="header">Ini adalah Ujian Tengah Semester Pemrograman Web.</label>
+        <a href="https://new-fik.upnvj.ac.id/" alt="new-fik">Klik ini untuk ke laman Fakultas Ilmu Komputer UPN Veteran Jakarta -></a>
+    </header>
+    <div id="tittle">
+        <img src="https://belajargiat.id/wp-content/uploads/2020/11/logo-upnvj.png" alt="logo UPNVJ" width="20" height="20">
+        <label id="sistem">Sistem Pengajuan Peminjaman Lab Fakultas Ilmu Komputer Universitas Pembangunan Nasional Veteran Jakarta</label>
+    </div>
+    <div id="container">
+        <div id="left">
+            <h1>Selamat Datang pada Sistem Pengajuan Peminjaman Lab <span style="color: orange;">Fakultas Ilmu Komputer </span><span style="color: rgb(45, 171, 249);">UPN Veteran Jakarta</span></h1>
+            <p style="font-size: small;">Sistem ini untuk sebagai tolak ukur pemahaman diri saya terhadap materi pemrograman web sistem informasi</p>
+            <br>
+            <input type="button" value="Mulai  >" id="mulai" class="button">
+            <input type="button" value="Daftar Diri" id="daftar" class="button">
+        </div>
+        <div id="right">
+            <img src="fik.png" alt="Fakultas Ilmu Komputer" width="400" height="350">
+        </div>
+    </div>
+
+    <script>
+        const mulaiButton = document.getElementById("mulai");
+        const daftarButton = document.getElementById("daftar");
+
+        mulaiButton.addEventListener("click", function() {
+            window.open('form_peminjaman.html', 'Form Peminjaman');
+        });
+        daftarButton.addEventListener("click", function() {
+            window.open('data_diri.html', 'Daftar Diri Pembuat Website', 'width=500,height=250');
+        });
+    </script>
+</body>
+</html>

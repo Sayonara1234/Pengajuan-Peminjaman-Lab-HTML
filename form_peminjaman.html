@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Peminjaman</title>
+    <style>
+        body {
+            margin: 0 auto;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .formPinjam {
+            width: 350px;
+            text-align: center;
+        }
+
+        .ruangan-checkbox {
+            display: flex;
+        }
+
+        #lantaiSelect {
+            width: 294px;
+            height: 44px;
+            margin: 8px;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        .input {
+            width: 270px;
+            margin: 8px;
+            height: 20px;
+            font-size: 13px;
+            padding: 10px;
+        }
+
+        .button {
+            background-color: rgb(45, 171, 249);
+            color: white;
+            border: none;
+            width: 294px;
+            margin: 8px;
+            height: 42px;
+            border-radius: 2px;
+            font-size: 13px;
+        }
+
+        #headerForm {
+            padding: 1px 23px;
+        }
+
+        #peminjamanForm {
+            background-color: whitesmoke;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="formPinjam">
+        <div id="headerForm" style="background-color: rgb(45, 171, 249); color: white;">
+            <h4>FORM PENGISIAN PEMINJAMAN LAB FAKULTAS ILMU KOMPUTER GEDUNG KI HAJAR DEWANTARA UPN VETERAN JAKARTA<span><br><img src="https://belajargiat.id/wp-content/uploads/2020/11/logo-upnvj.png" alt="logo UPNVJ" width="30" height="30"></span></h4>
+        </div>
+        <form id="peminjamanForm">
+            <input type="text" placeholder="NIM Mahasiswa" id="nimInput" class="input" autocomplete="off" required><br>
+            <input type="text" placeholder="Nama Mahasiswa" id="namaInput" class="input" autocomplete="off" required><br>
+            <input type="text" placeholder="Semester Mahasiswa" id="semesterInput" class="input" autocomplete="off" required><br>
+            <select id="lantaiSelect" required>
+                <option value="">Pilih Lantai</option>
+                <option value="Lantai 2">Lantai 2</option>
+                <option value="Lantai 3">Lantai 3</option>
+                <option value="Lantai 4">Lantai 4</option>
+            </select>
+            <div id="ruanganOptions" style="display:none; height: max-content; text-align: left; margin-bottom: 8px;">
+                <div id="ruangLantai2" class="ruangan-checkbox" style="display: none;">
+                    <fieldset>
+                        <legend>Lab Fakultas Ilmu Komputer Lantai 2</legend>
+                        FIK-LAB 201 <input type="checkbox" id="fiklab201" value="FIK-LAB 201"><br>
+                        FIK-LAB 202 <input type="checkbox" id="fiklab202" value="FIK-LAB 202"><br>
+                        FIK-LAB 203 <input type="checkbox" id="fiklab203" value="FIK-LAB 203">
+                    </fieldset>
+                </div>
+                <div id="ruangLantai3" class="ruangan-checkbox" style="display: none;">
+                    <fieldset>
+                        <legend>Lab Fakultas Ilmu Komputer Lantai 3</legend>
+                        FIK-LAB 301 <input type="checkbox" id="fiklab301" value="FIK-LAB 301"><br>
+                        FIK-LAB 302 <input type="checkbox" id="fiklab302" value="FIK-LAB 302"><br>
+                        FIK-LAB 303 <input type="checkbox" id="fiklab303" value="FIK-LAB 303">
+                    </fieldset>
+                </div>
+                <div id="ruangLantai4" class="ruangan-checkbox" style="display: none;">
+                    <fieldset>
+                        <legend>Lab Fakultas Ilmu Komputer Lantai 4</legend>
+                        FIK-LAB 401 <input type="checkbox" id="fiklab401" value="FIK-LAB 401"><br>
+                        FIK-LAB 402 <input type="checkbox" id="fiklab402" value="FIK-LAB 402"><br>
+                        FIK-LAB 403 <input type="checkbox" id="fiklab403" value="FIK-LAB 403">
+                    </fieldset>
+                </div>
+            </div>
+            <input type="button" id="submit" class="button" value="Submit"><br>
+            <input type="button" id="backToHome" class="button" value="Kembali ke Home">
+        </form>
+    </div>
+    
+    <script>
+        const nimInput = document.getElementById("nimInput");
+        const namaInput = document.getElementById("namaInput");
+        const semesterInput = document.getElementById("semesterInput");
+        const lantaiSelect = document.getElementById("lantaiSelect");
+        const ruanganOptions = document.getElementById("ruanganOptions");
+        const ruangLantai2 = document.getElementById("ruangLantai2");
+        const ruangLantai3 = document.getElementById("ruangLantai3");
+        const ruangLantai4 = document.getElementById("ruangLantai4");
+        const submitButton = document.getElementById("submit");
+        const backToHomeButton = document.getElementById("backToHome");
+
+        lantaiSelect.addEventListener("change", function() {
+            ruangLantai2.style.display = "none";
+            ruangLantai3.style.display = "none";
+            ruangLantai4.style.display = "none";
+
+            if (lantaiSelect.value === "Lantai 2") {
+                ruangLantai2.style.display = "block";
+            } else if (lantaiSelect.value === "Lantai 3") {
+                ruangLantai3.style.display = "block";
+            } else if (lantaiSelect.value === "Lantai 4") {
+                ruangLantai4.style.display = "block";
+            }
+            
+            ruanganOptions.style.display = "block";
+        });
+
+        backToHomeButton.addEventListener("click", function() {
+            window.close();
+        });
+
+        submitButton.addEventListener("click", function() {
+            const selectedSemester = parseInt(semesterInput.value);
+            const selectedNIM = nimInput.value;
+            const selectedNama = namaInput.value;
+            const selectedLantai = lantaiSelect.value;
+            const selectedRuangan = [];
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(function(checkbox) {
+                selectedRuangan.push(checkbox.value);
+            });
+
+            if (selectedNIM === "" || selectedNama === "" || selectedSemester === "" || selectedLantai === "" || selectedRuangan.length === 0) {
+                alert("Harap isi semua field sebelum mengirimkan formulir.");
+            } else if (selectedSemester < 3) {
+                alert("Mahasiswa Belum bisa mengajukan peminjaman lab! \nHarus Semester 3 ke atas!");
+            } else {
+                const tahunMasuk = new Date().getFullYear() - Math.floor(selectedSemester / 2);
+                const labPilihan = selectedRuangan.join(", ");
+                window.open(`hasil_form_peminjaman.html?nim=${selectedNIM}&nama=${selectedNama}&lantai=${selectedLantai}&tahunMasuk=${tahunMasuk}&labPilihan=${labPilihan}`, "_blank", 'width=510,height=340');
+            }
+        });
+    </script>
+</body>
+</html>
